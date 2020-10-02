@@ -20,3 +20,6 @@ simulation.reporters.append(StateDataReporter('sim1.log', 10000, step=True, pote
 simulation.step(2500000)
 simulation.saveState('sim1.xml')
 
+# save the final pdb file 
+positions = simulation.context.getState(getPositions=True).getPositions()
+PDBFile.writeFile(prmtop.topology, positions, open('sim1.pdb', 'w'))
